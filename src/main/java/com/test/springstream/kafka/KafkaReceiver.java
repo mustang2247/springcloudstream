@@ -8,14 +8,15 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 
 /**
  * 消费者端代码
- * 通过receive方法接收消息
+ *
+ * 消费者通过@StreamListener监听
  */
 @EnableBinding(Sink.class)
 public class KafkaReceiver {
 
     private final Logger logger = LoggerFactory.getLogger(KafkaReceiver.class);
 
-    @StreamListener(Sink.INPUT_1)
+    @StreamListener(Sink.INPUT)
     private void receive(String vote) {
         logger.info("receive message : " + vote);
     }
